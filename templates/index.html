@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Abertura de Chamados e Incidentes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0044cc;
+        }
+
+        .section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            color: #0044cc;
+            margin-bottom: 10px;
+        }
+
+        .info-card {
+            background: #f0f4ff;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #0044cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background: #0044cc;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #003399;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .flex-item {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function toggleTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Guia de Abertura de Chamados</h1>
+
+        <div class="info-card">
+            <strong>Desenvolvedor de Sobreaviso ({{ on_call_period }})</strong><br>
+            <strong>Nome:</strong> {{ developer_on_call }}<br>
+            <strong>Cargo:</strong> {{ developer_info['position'] }}<br>
+            <strong>Email:</strong> <a href="msteams:{{ developer_info['email'] }}">{{ developer_info['email'] }}</a><br>
+            <strong>Telefone:</strong> <a href="tel:{{ developer_info['phone'] }}">{{ developer_info['phone'] }}</a>
+        </div>
+
+        <div>
+            <button onclick="toggleTab('faq')">FAQ</button>
+            <button onclick="toggleTab('queries')">Querys</button>
+            <button onclick="toggleTab('escalation')">Escalonamento</button>
+        </div>
+
+        <div class="tab-content" id="faq">
+            <div class="section">
+                <h2>FAQ</h2>
+                <p>Conteúdo de FAQ...</p>
+            </div>
+        </div>
+
+        <div class="tab-content" id="queries">
+            <div class="section">
+                <h2>Querys</h2>
+                <p>Conteúdo de Querys...</p>
+            </div>
+        </div>
+
+        <div class="tab-content" id="escalation">
+            <div class="section">
+                <h2>Escalonamento</h2>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <strong>Elaine Sutto</strong> - Techlead<br>
+                        <a href="msteams:elaine.sutto@surf.com.br">elaine.sutto@surf.com.br</a> |
+                        <a href="tel:(11) 91234-5678">(11) 91234-5678</a>
+                    </div>
+                    <div class="flex-item">
+                        <strong>Mauro Maria</strong> - Coordenador de Infraestrutura<br>
+                        <a href="msteams:mauro.maria@surf.com.br">mauro.maria@surf.com.br</a> |
+                        <a href="tel:(11) 98765-4321">(11) 98765-4321</a>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <strong>Henrique Bayardo</strong> - Gerente de TI<br>
+                    <a href="msteams:henrique.bayardo@surf.com.br">henrique.bayardo@surf.com.br</a> |
+                    <a href="tel:(11) 96543-2100">(11) 96543-2100</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
